@@ -1,5 +1,5 @@
 {
-  "name": "jun/laravel-batch",
+  "name": "jun1121/laravel-batch",
   "description": "laravel eloquent 批量处理扩展包",
   "type": "library",
   "license": "MIT",
@@ -25,7 +25,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Jun\\LaravelBatch\\AppServiceProvider"
+        "Jun1121\\LaravelBatch\\AppServiceProvider"
       ]
     }
   },
