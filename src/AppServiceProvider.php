@@ -31,11 +31,11 @@ class AppServiceProvider extends LaravelServiceProvider
      */
     private function registerSimpleBatch(): void
     {
-        Eloquent\Builder::macro('simpleBatch', function (string $column, array $values = [], array $option = []): int {
+        Eloquent\Builder::macro('simpleBatch', function (string $column, $values = [], array $option = []): int {
             return SimpleBatch::builder($this, $option)->update($column, $values);
         });
 
-        Query\Builder::macro('simpleBatch', function (string $column, array $values = [], array $option = []): int {
+        Query\Builder::macro('simpleBatch', function (string $column, $values = [], array $option = []): int {
             return SimpleBatch::builder($this, $option)->update($column, $values);
         });
     }

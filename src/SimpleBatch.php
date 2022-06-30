@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Jun1121\LaravelBatch;
 
 use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 use JsonException;
@@ -12,10 +13,15 @@ use Jun1121\LaravelBatch\Abstracts\BatchAbstract;
 class SimpleBatch extends BatchAbstract
 {
     /**
+     * @inheritdoc
      * @throws JsonException
      */
-    public function update(string $column, array $values = []): int
+    public function update(string $column, $values = []): int
     {
+        if ($values instanceof Collection) {
+            $values = $values->pluck($column, $this->getKeyName())->toArray();
+        }
+
         if (count($values) === 0) {
             return 0;
         }

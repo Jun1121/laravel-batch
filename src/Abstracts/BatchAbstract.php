@@ -5,6 +5,7 @@ namespace Jun1121\LaravelBatch\Abstracts;
 
 use Illuminate\Database\Eloquent;
 use Illuminate\Database\Query;
+use Illuminate\Support\Collection;
 use JsonException;
 
 abstract class BatchAbstract
@@ -30,11 +31,11 @@ abstract class BatchAbstract
     }
 
     /**
-     * @param string $column
-     * @param array  $values
+     * @param string           $column
+     * @param array|Collection $values
      * @return int
      */
-    abstract public function update(string $column, array $values = []): int;
+    abstract public function update(string $column, $values = []): int;
 
     /**
      * @param Query\Builder|Eloquent\Builder $builder
